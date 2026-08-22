@@ -87,6 +87,23 @@ footer{border-top:1px solid var(--line);padding:48px 7vw 25px;display:grid;grid-
  .nav{padding:0 5vw}.hero,.section{padding-left:6vw;padding-right:6vw}.copy h1{font-size:43px;letter-spacing:-3px}.copy>p{font-size:13px}.actions .btn{width:100%}.stats,.cards,.steps,.quotes,.row{grid-template-columns:1fr}.socials{grid-template-columns:1fr}.steps:before{display:none}.head h2,.center h2,.contact h2{font-size:40px;letter-spacing:-3px}.visual{min-height:360px}.card{width:95%}.orb{width:150px;height:150px}.section{padding-top:85px;padding-bottom:85px}
 }
 
+
+/* CONTACT FORM FIX */
+.contact .form{width:100%;max-width:760px;align-self:start}
+.contact .form label{width:100%;min-width:0}
+.contact .form .row{width:100%}
+.contact .form input,
+.contact .form textarea,
+.contact .form select{display:block;width:100%;min-width:0;max-width:100%;font-size:13px;line-height:1.4}
+.contact .form textarea{resize:vertical;min-height:130px}
+.contact .form select{appearance:auto}
+.contact .form .btn{width:auto;min-width:170px}
+@media(max-width:700px){
+ .contact .form{max-width:none}
+ .contact .form .row{grid-template-columns:1fr}
+ .contact .form .btn{width:100%}
+}
+
 </style></head>
 <body>
 <header class="nav">
@@ -133,11 +150,15 @@ footer{border-top:1px solid var(--line);padding:48px 7vw 25px;display:grid;grid-
 </div></section>
 
 <section id="contact" class="section contact"><div><label>LET'S TALK</label><h2>READY TO <em>IMPROVE?</em></h2><p class="big">Have a question about coaching, replay analysis or something custom? Send a message.</p><p class="price">YOUR_EMAIL@example.com</p></div>
-<form id="form"><div class="row"><label>Name<input required name="name" placeholder="Your name"></label><label>Email<input required type="email" name="email" placeholder="you@example.com"></label></div><label>Discord Username<input name="discord" placeholder="username"></label><label>Service<select name="service"><option>1-on-1 Coaching</option><option>Replay Analysis</option><option>Custom Coaching</option><option>Other</option></select></label><label>Message<textarea required name="message" rows="5" placeholder="Tell me what you want to improve..."></textarea></label><button class="btn red" type="submit">SEND MESSAGE →</button><small id="status"></small></form></section>
+<form id="form" class="form"><div class="row"><label>Name<input required name="name" placeholder="Your name"></label><label>Email<input required type="email" name="email" placeholder="you@example.com"></label></div><label>Discord Username<input name="discord" placeholder="username"></label><label>Service<select name="service"><option>1-on-1 Coaching</option><option>Replay Analysis</option><option>Custom Coaching</option><option>Other</option></select></label><label>Message<textarea required name="message" rows="5" placeholder="Tell me what you want to improve..."></textarea></label><button class="btn red" type="submit">SEND MESSAGE →</button><small id="status"></small></form></section>
 </main>
 
 <footer><div><a class="logo" href="#home"><span>B1</span> IamB1ood</a><p>Rocket League Coach & Content Creator</p></div><div class="flinks"><a href="#home">Home</a><a href="#coaching">Coaching</a><a href="#about">About</a><a href="#socials">Socials</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><div class="ficons"><a href="https://www.youtube.com/@IamB1oodRL">▶</a><a href="https://www.tiktok.com/@iamb1oodrl">♪</a><a href="https://www.twitch.tv/iamb1ood">◉</a><a href="https://discord.gg/YOUR_INVITE">◌</a></div><small>© 2026 IamB1ood. All rights reserved.</small></footer>
 <script>
-const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.onclick=()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px 7vw';nav.style.flexDirection='column';nav.style.background='#080808';nav.style.borderBottom='1px solid #222'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>nav.removeAttribute('style'));document.getElementById('form').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const body=encodeURIComponent(`Name: ${d.get('name')}\nEmail: ${d.get('email')}\nDiscord: ${d.get('discord')}\nService: ${d.get('service')}\n\n${d.get('message')}`);window.location.href=`mailto:YOUR_EMAIL@example.com?subject=Coaching request from ${encodeURIComponent(d.get('name'))}&body=${body}`;document.getElementById('status').textContent='Opening your email app...'};
-</script>
-</body></html>
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.onclick=()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px 7vw';nav.style.flexDirection='column';nav.style.background='#080808';nav.style.borderBottom='1px solid #222'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>nav.removeAttribute('style'));document.getElementById('form').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const body=encodeURIComponent(`Name: ${d.get('name')}
+Email: ${d.get('email')}
+Discord: ${d.get('discord')}
+Service: ${d.get('service')}
+
+${d.get('message')}`);window.location.href=`mailto:YOUR_EMAIL@example.com?subject=Coaching request from ${encodeURIComponent(d.get('name'))}&body=${body}`;document.getElementById('status').textContent='Opening your email app...'};
+</script></body></html>

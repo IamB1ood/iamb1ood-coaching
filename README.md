@@ -21,3 +21,7 @@ The CSS and JavaScript are also embedded directly in index.html, so the website 
 
 ## Premium edition
 This edition has a redesigned premium esports UI, stronger crimson lighting, glass-style navigation, upgraded cards, improved spacing, mobile responsiveness, animated hero orb, and a cleaner coaching/contact experience.
+
+
+### Contact form fix
+The contact form uses the correct `form` class and has defensive responsive sizing rules so fields cannot collapse or overlap.
