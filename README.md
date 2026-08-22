@@ -25,3 +25,12 @@ This edition has a redesigned premium esports UI, stronger crimson lighting, gla
 
 ### Contact form fix
 The contact form uses the correct `form` class and has defensive responsive sizing rules so fields cannot collapse or overlap.
+
+
+## Contact form — no Microsoft Edge popup
+
+The contact form now uses FormSubmit via AJAX instead of `mailto:`. It will not open an email app or Microsoft Edge.
+
+Before publishing, replace every occurrence of `YOUR_EMAIL@example.com` with the email address where you want coaching requests delivered.
+
+The first submission may require you to confirm/activate the receiving email with FormSubmit. After that, messages are delivered directly to the configured email.

@@ -1,1 +1,29 @@
-const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.onclick=()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px 7vw';nav.style.flexDirection='column';nav.style.background='#080808';nav.style.borderBottom='1px solid #222'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>nav.removeAttribute('style'));document.getElementById('form').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const body=encodeURIComponent(`Name: ${d.get('name')}\nEmail: ${d.get('email')}\nDiscord: ${d.get('discord')}\nService: ${d.get('service')}\n\n${d.get('message')}`);window.location.href=`mailto:YOUR_EMAIL@example.com?subject=Coaching request from ${encodeURIComponent(d.get('name'))}&body=${body}`;document.getElementById('status').textContent='Opening your email app...'};
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.onclick=()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.padding='20px 7vw';nav.style.flexDirection='column';nav.style.background='#080808';nav.style.borderBottom='1px solid #222'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>nav.removeAttribute('style'));document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const status = document.getElementById('status');
+  const button = form.querySelector('button[type="submit"]');
+  const data = new FormData(form);
+
+  status.textContent = 'Sending message...';
+  button.disabled = true;
+  button.style.opacity = '.65';
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/YOUR_EMAIL@example.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    });
+
+    if (!response.ok) throw new Error('Request failed');
+
+    form.reset();
+    status.textContent = 'Message sent successfully!';
+  } catch (error) {
+    status.textContent = 'Could not send the message. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.style.opacity = '1';
+  }
+});
